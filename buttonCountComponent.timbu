@@ -1,0 +1,22 @@
+import Timbu from './timbu/timbu.js'
+
+
+Timbu.component('button-counter', {
+  data: (function () { 
+    // Estado persistente
+    var count = 0;
+
+    // Método de incremento
+    function inc() {
+      count++;
+      escrever('click button chamado!'); // Simula console.log
+      renderTexto(count); // Atualiza texto no DOM
+    }
+
+    // Retorna os métodos que podem ser acessados
+    return {
+      inc,
+    };
+  })(),// IIFE (função imediatamente invocada).
+  template: "<button onclick=\"Timbu.components['button-counter'].data.inc()\">Increment</button>",
+});
